@@ -8,13 +8,13 @@ const app = express();
 conectarDB();
 
 //Habilitando cors
-app.use(cors());
+//app.use(cors());
 
 //Habilitar express.json
 app.use(express.json({ extended: true }));
 
 //puerto de lapp
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 //Importar rutas
 app.use('/api/usuario', require('./routes/usuarios'));
@@ -22,7 +22,11 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/proyecto', require('./routes/proyectos'));
 app.use('/api/tarea', require('./routes/tareas'));
 
+app.get('/', (req,res) => {
+    res.send({ ok: true});
+});
+
 //arrancar la app
-app.listen(port, '0.0.0.0',() => {
+app.listen(port,() => {
     console.log(`El servidor esta funcionando en el puerto ${port}`);
 });
