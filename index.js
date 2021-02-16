@@ -8,7 +8,7 @@ const app = express();
 conectarDB();
 
 //Habilitando cors
-//app.use(cors());
+app.use(cors());
 
 //Habilitar express.json
 app.use(express.json({ extended: true }));
@@ -27,6 +27,6 @@ app.get('/', (req,res) => {
 });
 
 //arrancar la app
-app.listen(port,() => {
+app.listen(port,'0.0.0.0',() => {
     console.log(`El servidor esta funcionando en el puerto ${port}`);
 });
